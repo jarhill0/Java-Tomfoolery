@@ -29,4 +29,16 @@ public class CellPhone {
         this.model = model;
         this.numCalls = numCalls;
     }
+
+    public void setOn(boolean isOn) {
+        this.isOn = isOn;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getBatteryLife() {
+        return batteryLife;
+    }
 }
