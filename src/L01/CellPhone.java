@@ -14,6 +14,14 @@ public class CellPhone {
         this.numCalls = 18;
     }
 
+    // Custom contructor: 2 parameters
+    public CellPhone(int numCalls, double batteryLife) {
+        this.numCalls = numCalls;
+        this.batteryLife = batteryLife;
+        model = "JavaPhone";
+        isOn = true;
+    }
+
     // Custom constructor
     public CellPhone(boolean isOn, double batteryLife, String model, int numCalls) {
         this.isOn = isOn;
