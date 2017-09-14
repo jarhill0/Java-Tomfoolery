@@ -1,25 +1,29 @@
 package L02;
 
-public class CandyJar {
+public class Refillable {
     private int quantity;
 
-    public CandyJar() {
+    public Refillable() {
         quantity = 10;
     }
 
-    public CandyJar(int amount) {
+    public Refillable(int amount) {
         quantity = amount;
     }
 
-    public void eat(int amount) {
+    public void useUp(int amount) {
         quantity -= amount;
     }
 
-    public void refill(int amount) {
+    public void addTo(int amount) {
         quantity += amount;
     }
 
     public void doubleCandyAmount() {
         quantity *= 2;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
