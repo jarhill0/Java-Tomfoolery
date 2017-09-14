@@ -23,10 +23,6 @@ public class Refillable {
         quantity += amount;
     }
 
-    public void doubleCandyAmount() {
-        quantity *= 2;
-    }
-
     public int getQuantity() {
         return quantity;
     }
