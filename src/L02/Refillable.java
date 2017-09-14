@@ -2,8 +2,8 @@ package L02;
 
 public class Refillable {
     private int quantity;
-    private int uses = 0;
-    private int totalUsed = 0;
+    private double uses = 0;
+    private double totalUsed = 0;
 
     public Refillable() {
         quantity = 10;
@@ -28,6 +28,6 @@ public class Refillable {
     }
 
     public double averageUse() {
-        return (double) totalUsed / (double) uses;
+        return totalUsed / uses;
     }
 }
