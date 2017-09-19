@@ -7,6 +7,7 @@ public class StringSlicing {
     public StringSlicing(String myString) {
         int spaceIndex = myString.indexOf(" ");
         if (spaceIndex == -1) {
+            // No space in the string
             strLeft = myString;
             strRight = "";
             return;
