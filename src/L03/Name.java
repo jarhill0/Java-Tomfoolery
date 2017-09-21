@@ -26,6 +26,14 @@ public class Name {
         return myFirst + " " + myMiddle + " " + myLast;
     }
 
+    public String initials() {
+        return myFirst.substring(0, 1) + myMiddle.substring(0, 1) + myLast.substring(0, 1);
+    }
+
+    public String nickname() {
+        return myFirst.substring(0, 4) + "y";
+    }
+
     // Return the result of "fixing" the given part of the name,
     // that is, making sure it starts with a capital letter and
     // has only lower-case letters after the first.
