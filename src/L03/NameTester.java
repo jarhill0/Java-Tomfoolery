@@ -17,7 +17,7 @@ public class NameTester {
 
         System.out.println("Nickname: \"" +
                 testName.nickname() +
-                "\", should be: \"Homiy\"");
+                "\", should be: \"Homiey\"");
     }
 
     public static void main(String[] args) {
