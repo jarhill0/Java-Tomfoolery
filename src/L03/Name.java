@@ -31,7 +31,7 @@ public class Name {
     }
 
     public String nickname() {
-        return myFirst.substring(0, 4) + "ey";
+        return myFirst.substring(0, 1) + myLast.substring(0, myLast.length() / 2);
     }
 
     // Return the result of "fixing" the given part of the name,

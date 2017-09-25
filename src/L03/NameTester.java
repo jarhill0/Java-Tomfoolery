@@ -17,7 +17,7 @@ public class NameTester {
 
         System.out.println("Nickname: \"" +
                 testName.nickname() +
-                "\", should be: \"Homiey\"");
+                "\", should be: \"HI\"");
     }
 
     public static void altTester() {
@@ -33,7 +33,7 @@ public class NameTester {
         if (testName("HKI", testName.initials(), "initials()")) {
             passedTests++;
         }
-        if (testName("Homiey", testName.nickname(), "nickname()")) {
+        if (testName("HI", testName.nickname(), "nickname()")) {
             passedTests++;
         }
         System.out.println("Testing completed. Passed " + String.valueOf(passedTests) + "/" + String.valueOf(totalTests));
@@ -43,14 +43,14 @@ public class NameTester {
 
     private static boolean testName(String expected, String actual, String testName) {
         if (!expected.equals(actual)) {
-            System.out.println("Test " + testName + " failed. (Expected \"" + expected + "\" but got \"" + testName + "\")");
+            System.out.println("Test " + testName + " failed. (Expected \"" + expected + "\" but got \"" + actual + "\")");
             return false;
         }
         return true;
     }
 
     public static void main(String[] args) {
-        // new NameTester();
+        //new NameTester();
         NameTester.altTester();
     }
 
