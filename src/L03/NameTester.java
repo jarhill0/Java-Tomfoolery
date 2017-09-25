@@ -20,8 +20,38 @@ public class NameTester {
                 "\", should be: \"Homiey\"");
     }
 
+    public static void altTester() {
+        Name testName = new Name(" Homie", "  killin  ", "IT       ");
+        int totalTests = 4;
+        int passedTests = 0;
+        if (testName("Homie Killin It", testName.fullName(), "fullName()")) {
+            passedTests++;
+        }
+        if (testName("It, Homie Killin", testName.lastFirst(), "lastFirst()")) {
+            passedTests++;
+        }
+        if (testName("HKI", testName.initials(), "initials()")) {
+            passedTests++;
+        }
+        if (testName("Homiey", testName.nickname(), "nickname()")) {
+            passedTests++;
+        }
+        System.out.println("Testing completed. Passed " + String.valueOf(passedTests) + "/" + String.valueOf(totalTests));
+
+
+    }
+
+    private static boolean testName(String expected, String actual, String testName) {
+        if (!expected.equals(actual)) {
+            System.out.println("Test " + testName + " failed. (Expected \"" + expected + "\" but got \"" + testName + "\")");
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        new NameTester();
+        // new NameTester();
+        NameTester.altTester();
     }
 
 }
