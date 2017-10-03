@@ -36,7 +36,7 @@ public class Refillable2 {
     }
 
     public int averageUse() {
-        return myTotalUse / myUseUpCallCount;
+        return myUseUpCallCount != 0 ? myTotalUse / myUseUpCallCount : -1;
     }
 }
 
