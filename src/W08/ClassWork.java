@@ -25,5 +25,9 @@ public class ClassWork {
         return Collections.frequency(Arrays.asList(new Integer[]{a, b, c}), 0) == 2;
     }
 
+    public boolean mystery3(int a, int b, int c) {
+        return a == 0 ? b == 0 ^ c == 0 : b == 0 && c == 0;
+    }
+
 }
 
