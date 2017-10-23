@@ -7,12 +7,8 @@ public class Person {
         this.height = height;
     }
 
-    public double getHeight() {
-        return height;
-    }
-
     public boolean equals(Person otherPerson) {
-        return height == otherPerson.getHeight();
+        return height == otherPerson.height; // we can access private vars of instances of same class!
     }
 }
 
