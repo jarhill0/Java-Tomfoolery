@@ -4,7 +4,6 @@ package L06.camv1;
 //   this class and to call 2 methods on it.
 
 
-
 ////////////////////////////////////////////
 
 
@@ -35,7 +34,7 @@ import javax.swing.Timer;
 import javax.swing.border.Border;
 
 
-public class VirtualPetFace extends JFrame implements ActionListener{
+public class VirtualPetFace extends JFrame implements ActionListener {
 
     private final int WIDTH = 400;
     private final int HEIGHT = 400;
@@ -47,14 +46,14 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private Image[] allPics;
     private ArrayList<Image> pics;
     private Timer timer;
-    
 
-    private static final String imageBase = "./pet_images/";
-    
+
+    private static final String imageBase = "src\\L06\\camv1\\pet_images\\";
+
     public static void main(String args[]) {
-        VirtualPet newPet = new VirtualPet();   
+        VirtualPet newPet = new VirtualPet();
     }
-    
+
     public VirtualPetFace() {
         try {
             javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
@@ -65,25 +64,25 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         } catch (Exception e) {
             System.err.println("createGUI didn't successfully complete");
         }
-        
+
         init();
     }
-    
+
     public void init() {
         String curDir = System.getProperty("user.dir");
-        
-        base = curDir + "/" + imageBase;
+
+        base = curDir + "\\" + imageBase;
         pics = new ArrayList<Image>();
         timer = new Timer(400, this);
         //timer.setInitialDelay(1000);
 
         getAllImages();
-        
+
         setBackground();
         //setImage("angel");      
         //setMessage("Hello, and Welcome!");
     }
-    
+
     public void createGUI() {
         setMaximumSize(new Dimension(WIDTH, HEIGHT));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,8 +90,8 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new GridBagLayout());
         contentPane.setBackground(Color.white);
-       
-        
+
+
         imagePanel = new ImagePanel();
         int width = 200;
         int height = 200;
@@ -103,15 +102,15 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
-        contentPane.add(imagePanel,c);
-        
+        contentPane.add(imagePanel, c);
+
         textArea = new JTextPane();
         textArea.setEditable(false);
         JScrollPane scroll = new JScrollPane(textArea);
-        scroll.setPreferredSize(new Dimension(width, height/2));
-        scroll.setSize(new Dimension(width, height/2));
-        textArea.setPreferredSize(new Dimension(width, height/2));
-        textArea.setSize(new Dimension(width, height/2));
+        scroll.setPreferredSize(new Dimension(width, height / 2));
+        scroll.setSize(new Dimension(width, height / 2));
+        textArea.setPreferredSize(new Dimension(width, height / 2));
+        textArea.setSize(new Dimension(width, height / 2));
 
 
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -120,60 +119,60 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.gridy = 2;
         c.ipady = 20;
         contentPane.add(scroll, c);
-    
+
         setLocationRelativeTo(null);
         setVisible(true);
         //toFront();
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
     }
-    
+
     private void setBackground() {
-        Image backImage = createImage(base+"background.png", "");
+        Image backImage = createImage(base + "background.png", "");
         Border bkgrnd = new CentredBackgroundBorder(backImage);
         ((JComponent) getContentPane()).setBorder(bkgrnd);
     }
-    
+
     protected Image createImage(String path, String description) {
-           return new ImageIcon(path, description).getImage();
+        return new ImageIcon(path, description).getImage();
     }
 
     public void setImage(String mood) {
         timer.stop();
         pics.clear();
         getImages(mood);
-        timer.start(); 
+        timer.start();
     }
 
-     public void actionPerformed(ActionEvent e) {
-            loopslot++;
+    public void actionPerformed(ActionEvent e) {
+        loopslot++;
 
-            if (loopslot >= pics.size()) {
-                loopslot = 0;
-            }
-
-            imagePanel.repaint();
-
-            if (loopslot == pics.size()) {
-                timer.restart();
-            }
+        if (loopslot >= pics.size()) {
+            loopslot = 0;
         }
 
+        imagePanel.repaint();
+
+        if (loopslot == pics.size()) {
+            timer.restart();
+        }
+    }
+
     public void getAllImages() {
-        File dir = new File(base);   
-        files  = dir.list();
+        File dir = new File(base);
+        files = dir.list();
         allPics = new Image[files.length];
         for (int i = 0; i < files.length; i++) {
             //System.err.println(files[i]);
-            allPics[i]=createImage(base + files[i],"");
-            
+            allPics[i] = createImage(base + files[i], "");
+
         }
         //System.err.println(pics.size());
-    }       
-        
-        
+    }
+
+
     public void getImages(final String mood) {
-    
+
         for (int i = 0; i < files.length; i++) {
             if (files[i].contains(mood)) {
                 pics.add(allPics[i]);
@@ -181,16 +180,16 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         }
         //System.err.println(pics.size());
     }
-    
+
     public void setMessage(String message) {
         String current = textArea.getText();
         textArea.setText(current + "\n" + message);
         textArea.select(current.length(), (current.length() + message.length() + 1));
     }
-    
-    
+
+
     public class ImagePanel extends JPanel {
-        public ImagePanel( ) {
+        public ImagePanel() {
             super();
         }
 
@@ -205,19 +204,19 @@ public class VirtualPetFace extends JFrame implements ActionListener{
 
     public class CentredBackgroundBorder implements Border {
         private final Image image;
-     
+
         public CentredBackgroundBorder(Image image) {
             this.image = image;
         }
-     
+
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            g. drawImage(image, 0, 0, VirtualPetFace.this.getWidth(), VirtualPetFace.this.getHeight(),null);
+            g.drawImage(image, 0, 0, VirtualPetFace.this.getWidth(), VirtualPetFace.this.getHeight(), null);
         }
-     
+
         public Insets getBorderInsets(Component c) {
-            return new Insets(0,0,0,0);
+            return new Insets(0, 0, 0, 0);
         }
-     
+
         public boolean isBorderOpaque() {
             return true;
         }
