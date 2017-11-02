@@ -18,9 +18,9 @@ public class Greetings2 extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
+        g.fillRect(0, 0, 170, 100);
         newDrawRect(g, 10, 10, 100, 50);
         newDrawRect2(g, 100, 50, 30, 30);
-
     }
 
 
@@ -32,11 +32,16 @@ public class Greetings2 extends JPanel {
     // Step 26 This method takes top-left x, top-left y, bottom-right x, bottom-right y to define
     //  a rectangle.  It should take drawRect.
     public void newDrawRect(Graphics g, int tlx, int tly, int brx, int bry) {
+        Color prevColor = g.getColor();
+        g.setColor(new Color(70, 70, 255));
         g.drawLine(tlx, tly, brx, tly);
+        g.setColor(new Color(70, 255, 70));
         g.drawLine(brx, tly, brx, bry);
+        g.setColor(new Color(255, 70, 70));
         g.drawLine(brx, bry, tlx, bry);
+        g.setColor(new Color(255, 255, 70));
         g.drawLine(tlx, bry, tlx, tly);
-
+        g.setColor(prevColor);
     }
 
     public static void main(String[] args) {
