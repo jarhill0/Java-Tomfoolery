@@ -38,7 +38,7 @@ public class StupidStringFunctions {
     }
 
     public static String mergeStrings(String str1, String str2) {
-        char[] result = new char[str1.length() + str2.length()];
+        char[] result = new char[2 * Math.min(str1.length(), str2.length())];
         int i = 0;
         while (!str1.equals("") && !str2.equals("")) {
             result[i] = str1.charAt(0);
@@ -50,15 +50,7 @@ public class StupidStringFunctions {
             str2 = str2.substring(1);
         }
         // one (or both) of our strings is now empty, so add the remainder
-        for (char c : str1.toCharArray()) {
-            result[i] = c;
-            i++;
-        }
-        for (char c : str2.toCharArray()) {
-            result[i] = c;
-            i++;
-        }
-        return new String(result);
+        return new String(result) + str1 + str2;
     }
 
     public static void main(String[] args) {
