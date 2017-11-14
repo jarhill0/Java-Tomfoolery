@@ -33,6 +33,11 @@ public class StupidStringFunctionsTester extends BasicTester {
         runTest("htehlelroe123", StupidStringFunctions.mergeStrings("hello", "there123"), "merge 2 nonempty strings with unequal length 1");
         runTest("htehlelroe123", StupidStringFunctions.mergeStrings("hello123", "there"), "merge 2 nonempty strings with unequal length 2");
 
+        runTest(0, StupidStringFunctions.countRuns(""), "runs in empty string");
+        runTest(1, StupidStringFunctions.countRuns("a"), "string with length 1");
+        runTest(3, StupidStringFunctions.countRuns("abc"), "multiple 1-length runs");
+        runTest(1, StupidStringFunctions.countRuns("666"), "one >1 length run");
+        runTest(6, StupidStringFunctions.countRuns("122333444455555666666"), "multiple runs of differing lengths");
 
         finishTesting();
     }

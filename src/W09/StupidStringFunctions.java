@@ -53,6 +53,24 @@ public class StupidStringFunctions {
         return new String(result) + str1 + str2;
     }
 
+    public static int countRuns(String str) {
+        if (str.length() == 0)
+            return 0;
+        char lastChar = str.charAt(0);
+        str = str.substring(1);
+        int runs = 1;
+        while (!str.equals("")) {
+            char thisChar = str.charAt(0);
+            if (thisChar != lastChar) {
+                // even one character counts as a run
+                runs++;
+            }
+            lastChar = thisChar;
+            str = str.substring(1);
+        }
+        return runs;
+    }
+
     public static void main(String[] args) {
         System.out.println(length("hello"));
         System.out.println(length("hello world"));
