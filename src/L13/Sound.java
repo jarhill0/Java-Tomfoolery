@@ -36,46 +36,28 @@ public class Sound {
         myData = myViewer.load(fileName);
     }
 
-
-    /*
-     * Call this method to listen to the sound
-     */
     public void play() {
         myViewer.play();
     }
 
-    /*
-     * Zoom the viewer to a part of the sound
-     */
     public void zoomTo(int begin, int end) {
         myViewer.zoomTo(begin, end);
     }
 
-    /*
-     * Save the sound back to its file
-     */
     public void save() {
         myViewer.writeToFile(fileName);
     }
 
-    /*
-     * Save the sound to a new file
-     */
+
     public void saveAs(String anotherfile) {
         myViewer.writeToFile(anotherfile);
         fileName = anotherfile;
     }
 
-    /*
-     * Load in sound from a new file, overwriting the old
-     */
     public void load(String filename) {
         myData = myViewer.load(filename);
     }
 
-    /*
-     * Call this method to refresh the viewer after you've made changes to the sound data
-     */
     public void refresh() {
         myViewer.refresh(true);
     }
@@ -97,9 +79,6 @@ public class Sound {
         myViewer.setData(newData);
     }
 
-    //////////////////////////////////////////////
-    /// put your Sound transformation methods here
-    //////////////////////////////////////////////
 
     public int size() {
         return myData.size();
@@ -107,14 +86,12 @@ public class Sound {
 
     // note, this throws out half the data
     public void doublePitch() {
-        ArrayList<Integer> s = new ArrayList<Integer>(myData.size() / 2);
-        for (int i = 0; i < myData.size(); i += 2) {
+        ArrayList<Integer> s = new ArrayList<Integer>(size() / 2);
+        for (int i = 0; i < size(); i += 2) {
             int n = myData.get(i);
             s.add(i / 2, n);
         }
-        myData = s;
-        myViewer.setData(myData);
-        refresh();
+        setMyData(s);
     }
 
     public void amplify(double amt) {
@@ -149,11 +126,10 @@ public class Sound {
     }
 
     public static void main(String[] args) {
-        Sound s = new Sound();
-        s.amplify(2);
+        Sound s = new Sound("src\\L13\\sounds\\Kennedy_berliner.wav");
         s.doublePitch();
-        s.doublePitch();
+        s.amplify(1.2);
     }
 
 
-} // end Sound class
+}

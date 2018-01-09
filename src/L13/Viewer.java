@@ -156,8 +156,8 @@ public class Viewer implements LineListener {
 
         myHelper = new Helper(file);
         myHelper.setViewer(this);
-        createMainFrame();
         data = myHelper.getData();
+        createMainFrame();
         return data;
     }
 
@@ -220,7 +220,7 @@ public class Viewer implements LineListener {
     ////////////// methods to create the interactive visualizer ////////////////////////
     private void createMainFrame() {
         mainFrame = new JFrame();
-        mainFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container contentPane = mainFrame.getContentPane();
         //contentPane.setLayout(new BorderLayout());
 
