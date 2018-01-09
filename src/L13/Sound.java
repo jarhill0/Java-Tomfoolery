@@ -11,7 +11,7 @@ public class Sound {
 
 
     /*
-     * Constructor: this one opens a dialog box for you to pick a file toload.
+     * Constructor: this one opens a dialog box for you to pick a file to load.
      */
     public Sound() {
         myViewer = new Viewer();
@@ -107,18 +107,21 @@ public class Sound {
 
     // note, this throws out half the data
     public void doublePitch() {
-        ArrayList<Integer> s = new ArrayList<Integer>((myData.size() / 2));
-        for (int i = 0; i < s.size(); i++) {
-            int n = new Integer(myData.get(i * 2));
-            s.set(i, n);
+        ArrayList<Integer> s = new ArrayList<Integer>(myData.size() / 2);
+        for (int i = 0; i < myData.size(); i += 2) {
+            int n = myData.get(i);
+            s.add(i / 2, n);
         }
         myData = s;
+        myViewer.setData(myData);
         refresh();
     }
 
-    //complete this method
     public void amplify(double amt) {
-
+        for (int i = 0; i < myData.size(); i++) {
+            myData.set(i, (int) (myData.get(i) * amt));
+        }
+        refresh();
     }
 
 
@@ -143,6 +146,13 @@ public class Sound {
             myData.set(i, currentAmplitude);
         }
         refresh();
+    }
+
+    public static void main(String[] args) {
+        Sound s = new Sound();
+        s.amplify(2);
+        s.doublePitch();
+        s.doublePitch();
     }
 
 
