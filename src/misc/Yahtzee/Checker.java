@@ -112,23 +112,21 @@ public class Checker {
     }
 
     void printScores() {
-        String out = "==Numbers===";
-        out += "\nOnes: " + ones();
-        out += "\nTwos: " + twos();
-        out += "\nThrees: " + threes();
-        out += "\nFours " + fours();
-        out += "\nFives: " + fives();
-        out += "\nSixes: " + sixes();
+        System.out.println("==Numbers===");
+        System.out.println("Ones: " + ones());
+        System.out.println("Twos: " + twos());
+        System.out.println("Threes: " + threes());
+        System.out.println("Fours " + fours());
+        System.out.println("Fives: " + fives());
+        System.out.println("Sixes: " + sixes());
 
-        out += "\n\n==Specials==";
-        out += "\nThree of a kind: " + threeOfAKind();
-        out += "\nFour of a kind: " + fourOfAKind();
-        out += "\nFull House: " + fullHouse();
-        out += "\nSmall Straight: " + smallStraight();
-        out += "\nLarge Straight: " + largeStraight();
-        out += "\nYAHTZEE: " + yahtzee();
-        out += "\nChance: " + chance();
-
-        System.out.println(out);
+        System.out.println("\n==Specials==");
+        System.out.println("Three of a kind: " + threeOfAKind());
+        System.out.println("Four of a kind: " + fourOfAKind());
+        System.out.println("Full House: " + fullHouse());
+        System.out.println("Small Straight: " + smallStraight());
+        System.out.println("Large Straight: " + largeStraight());
+        System.out.println("YAHTZEE: " + yahtzee());
+        System.out.println("Chance: " + chance());
     }
 }
