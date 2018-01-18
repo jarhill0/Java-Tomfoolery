@@ -2,6 +2,7 @@ package misc.Yahtzee;
 
 public class Turn {
     private int playerNum;
+    private int rerollsLeft = 2;
     private Die[] dice = new Die[5];
 
     public Turn(int playerNum) {
