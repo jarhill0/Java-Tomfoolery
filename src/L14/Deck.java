@@ -16,23 +16,47 @@ public class Deck {
     }
 
     public void reset() {
-        throw new NotImplementedException(); //todo
+        myCards = new ArrayList<Card>(52);
+        for (int s = 0; s < 4; s++) {
+            for (int r = 0; r < 13; r++)
+                myCards.add(new Card(r, s));
+        }
     }
 
     public void perfectShuffle() {
-        throw new NotImplementedException(); //todo
+        ArrayList<Card> newCards = new ArrayList<Card>(52);
+        for (int i = 0; i < 52 / 2; i++) {
+            newCards.add(myCards.get(i));
+            newCards.add(myCards.get(i + 26));
+        }
+        myCards = newCards;
     }
 
     public void exchangeShuffle() {
-        throw new NotImplementedException(); //todo
+        for (int _ = 0; _ < 10000; _++) {
+            int aIndex = randGen.nextInt(52);
+            int bIndex = randGen.nextInt(52);
+            Card a = myCards.get(aIndex);
+            Card b = myCards.get(bIndex);
+            myCards.set(aIndex, b);
+            myCards.set(bIndex, a);
+        }
     }
 
     public void selectionShuffle() {
-        throw new NotImplementedException(); //todo
+        ArrayList<Card> newCards = new ArrayList<Card>(52);
+        for (int _ = 0; _ < 52; _++) {
+            int i = randGen.nextInt(myCards.size());
+            Card c = myCards.remove(i);
+            newCards.add(c);
+        }
+        myCards = newCards;
     }
 
     public void selectionSort() {
-        throw new NotImplementedException(); //todo
+        ArrayList<Card> newCards = new ArrayList<Card>(52);
+
+        myCards = newCards;
     }
 
     public void insertionSort() {
