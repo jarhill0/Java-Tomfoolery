@@ -55,7 +55,7 @@ public class Deck {
 
     public void selectionSort() {
         ArrayList<Card> newCards = new ArrayList<Card>(52);
-
+        //todo
         myCards = newCards;
     }
 
