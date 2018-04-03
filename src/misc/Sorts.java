@@ -2,19 +2,28 @@ package misc;
 
 public class Sorts {
     public static int[] merge(int[] arr) {
-        if (arr.length < 2)
-            return arr;
+        return mergeHelper(arr, 0, arr.length);
+    }
 
-        int midpoint = arr.length / 2;
-        int[] front = merge(slice(arr, 0, midpoint));
-        int[] back = merge(slice(arr, midpoint, arr.length));
+    private static int[] mergeHelper(int[] arr, int start, int end) {
+        int length = end - start;
 
-        int[] out = new int[arr.length];
+        if (length == 0)
+            return new int[]{};
+
+        if (length == 1)
+            return new int[]{arr[start]};
+
+        int midpoint = length / 2;
+        int[] front = mergeHelper(arr, start, start + midpoint);
+        int[] back = mergeHelper(arr, start + midpoint, end);
+
+        int[] out = new int[length];
 
         int outIndex = 0;
         int frontIndex = 0;
         int backIndex = 0;
-        while (frontIndex < front.length && backIndex < back.length) {
+        while (frontIndex < midpoint && backIndex < length - midpoint) {
             if (front[frontIndex] < back[backIndex]) {
                 out[outIndex] = front[frontIndex];
                 frontIndex++;
@@ -26,25 +35,12 @@ public class Sorts {
         }
 
         // exited loop because front or back has "run out" of elements; remaining array is known to be sorted.
-        for (; frontIndex < front.length; frontIndex++) {
+        for (; frontIndex < midpoint; frontIndex++) {
             out[outIndex] = front[frontIndex];
             outIndex++;
         }
-        for (; backIndex < back.length; backIndex++) {
+        for (; backIndex < length - midpoint; backIndex++) {
             out[outIndex] = back[backIndex];
-            outIndex++;
-        }
-        return out;
-    }
-
-    // slice an array, like in Python (arr[2:5])
-    private static int[] slice(int[] arr, int start, int end) {
-        int[] out = new int[end - start];
-
-        int outIndex = 0;
-
-        for (int i = start; i < end; i++) {
-            out[outIndex] = arr[i];
             outIndex++;
         }
         return out;
