@@ -109,6 +109,9 @@ public class Huffman {
                 "gameplay. We appreciate the candid feedback, and the passion the community has put forth around the " +
                 "current topics here on Reddit, our forums and across numerous social media outlets. Our team will " +
                 "continue to make changes and monitor community feedback and update everyone as soon and as often as we can.");
+        System.out.println(encoded.encoded);
+        System.out.printf("Encoded size: %d\n", encoded.encoded.length());
         System.out.println(decode(encoded));
+        System.out.printf("Decoded size: %d\n", decode(encoded).length() * 8);
     }
 }
